@@ -1,0 +1,56 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+	--plyr-color-main: #ceae55;
+	--plyr-badge-border-radius: 0;
+	--plyr-control-spacing: 0;
+	--plyr-control-radius: 0;
+	--plyr-menu-radius: 0;
+	--plyr-range-thumb-background: transparent;
+	--plyr-range-thumb-shadow: none;
+	--plyr-range-thumb-height: 13px;
+	--plyr-range-track-height: 13px;
+	--plyr-range-thumb-active-shadow-width: 0;
+}
+
+html {
+	@apply font-serif text-gray-700;
+}
+
+body {
+	background-color: #eee;
+}
+
+input:focus, button:focus {
+	outline: none;
+}
+
+#app {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.plyr,
+.plyr__progress input[type="range"],
+.plyr__progress__buffer {
+	width: 100% !important;
+}
+.plyr__progress {
+	margin-right: 0 !important;
+}
+.plyr__tooltip {
+	padding: 8px !important;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	border-radius: 0 !important;
+}
+input[type=range]::-webkit-slider-thumb {
+	visibility: hidden !important;
+}
+
+.plyr__progress__buffer::-webkit-progress-value {
+	display: none !important;
+}
