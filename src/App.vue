@@ -1,10 +1,10 @@
 <template>
 	<div class="xl:container xl:mx-auto relative flex flex-col min-h-screen bg-white border-l border-r">
 		<header class="flex justify-between mx-4 md:mx-10 mt-5">
-			<div class="logo"></div>
+			<div v-if="logoVisible" class="logo mt-1 sm:mt-0"></div>
 
-			<div class="flex justify-between flex-1 self-start pt-2 border-b">
-				<MainNav class="" />
+			<div class="flex justify-between flex-1 self-start pb-2 sm:pb-0 sm:pt-2 border-b">
+				<MainNav @menu-toggle="logoVisible = !$event" />
 				<SearchForm class="w-1/3 self-start" />
 			</div>
 		</header>
@@ -19,7 +19,7 @@
 
 <script>
 import { useStore } from 'vuex'
-import { computed, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import SearchForm from '/@/components/SearchForm.vue'
 import MainNav from '/@/components/MainNav.vue'
 import Player from '/@/components/player/index.vue'
@@ -33,6 +33,7 @@ export default {
 	},
 	setup () {
 		const store = useStore()
+		const logoVisible = ref(true)
 		const { value:getAlbums } = computed(() => store.getters['album/getAlbums'])
 
 		watch(() => store.state.album.category, cat => {
@@ -45,7 +46,8 @@ export default {
 		}, {immediate: true})
 
 		return {
-			albumLoaded: computed(() => store.state.player.album)
+			albumLoaded: computed(() => store.state.player.album),
+			logoVisible,
 		}
 	}
 }
@@ -53,8 +55,8 @@ export default {
 
 <style scoped>
 .logo {
-	width: 4.1rem;
-	height: 5.2rem;
+	width: 4.6rem;
+	height: 5.4rem;
 	background-image: url('./assets/logo.svg');
 	background-repeat: no-repeat;
 
