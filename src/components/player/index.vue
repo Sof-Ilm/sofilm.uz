@@ -9,8 +9,8 @@
 
 		<audio crossorigin="anonymous" controls></audio>
 
-		<div class="flex justify-between px-8">
-			<div class="flex items-center h-20">
+		<div class="flex justify-between px-4 sm:px-8">
+			<div class="flex flex-col sm:flex-row justify-center sm:items-center h-32 sm:h-20">
 				<Controls
 					:is-playing="isPlaying"
 					:playlist-visible="playlistVisible"
@@ -21,13 +21,13 @@
 					@play-toggle-click="togglePlayback"
 					@playlist-click="togglePlaylist" />
 
-				<div v-if="currentTrack" class="ml-20 max-w-lg">
+				<div v-if="currentTrack" class="order-first sm:order-none sm:block mb-4 sm:mb-0 sm:ml-20 max-w-lg">
 					<h5 class="truncate pb-1 text-lg">{{ currentTrack.title }}</h5>
 					<h6 class="text-sm text-gray-500">{{ album.title }}</h6>
 				</div>
 			</div>
 
-			<VolumeControl />
+			<VolumeControl class="self-end sm:self-auto mb-6 sm:mb-0" />
 		</div>
 	</div>
 </template>
@@ -70,7 +70,7 @@ export default {
 
 			const index = tracks.value.findIndex(({ id }) => id === track.id)
 
-			prevAvailable.value = index > 0
+			prevAvailable.value = tracks.value.length && index > 0
 			nextAvailable.value = index < tracks.value.length - 1
 			currentTrack.value = {
 				index,

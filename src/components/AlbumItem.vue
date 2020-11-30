@@ -1,20 +1,20 @@
 <template>
-	<article class="album-item">
+	<article class="album-item text-center sm:text-left">
 		<button @click="fetchTracks()">
-			<img src="https://via.placeholder.com/200" />
+			<CoverImage :width="200" :height="200" :src="album.cover" />
 		</button>
 		<h2 class="mt-3">
-			<button @click="fetchTracks()">{{ album.title }}</button>
+			<button @click="fetchTracks()" class="w-full sm:text-left truncate">{{ album.title }}</button>
 		</h2>
-		<p class="mt-2 text-xs">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
-		<small class="text-xs">Kecha</small>
 	</article>
 </template>
 
 <script>
 import { useStore } from 'vuex'
+import CoverImage from '/@/components/CoverImage.vue'
 
 export default {
+	components: {CoverImage},
 	props: {
 		album: Object
 	},
@@ -32,6 +32,10 @@ export default {
 
 <style scoped>
 .album-item {
-	width: 200px;
+	width: 90vw;
+
+	@screen sm {
+		width: 200px;
+	}
 }
 </style>

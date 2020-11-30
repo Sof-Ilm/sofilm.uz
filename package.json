@@ -15,6 +15,7 @@
     "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.3"
+    "@vue/compiler-sfc": "^3.0.3",
+    "postcss-nested": "4.2.3"
   }
 }

@@ -1,5 +1,5 @@
 <template>
-	<nav class="flex border-b mb-8 font-sans">
+	<nav class="flex border-b mb-8">
 		<button
 			v-for="{ id, title } in categories"
 			:key="id"
