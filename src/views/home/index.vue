@@ -1,17 +1,15 @@
 <template>
-	<img class="w-4/6 -mt-10 mb-10 mx-auto" src="/@/assets/bismillah.svg" />
+	<img class="md:w-4/6 mt-6 md:-mt-10 mb-6 md:mb-10 mx-auto" src="/@/assets/bismillah.svg" />
 
-	<main class="mx-10">
-		<CategoryNav />
+	<CategoryNav />
 
-		<section class="grid grid-cols-albums-fill justify-between">
-			<AlbumItem
-				v-for="album in getAlbums()"
-				:key="album.id"
-				class="mb-8"
-				:album="album" />
-		</section>
-	</main>
+	<section class="sm:grid sm:grid-cols-albums-fill sm:justify-between">
+		<AlbumItem
+			v-for="album in getAlbums()"
+			:key="album.id"
+			class="mb-10"
+			:album="album" />
+	</section>
 </template>
 
 <script>

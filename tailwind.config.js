@@ -15,7 +15,6 @@ module.exports = {
 			},
 		},
 		fontFamily: {
-			'serif': ['Noto Serif', 'Times New Roman', 'serif'],
 			'sans': ['Arsenal', 'sans-serif'],
 		}
 	},

@@ -1,6 +1,6 @@
 <template>
-	<div class="lg:container lg:mx-auto relative flex flex-col min-h-screen bg-white border-l border-r">
-		<header class="flex justify-between px-10 pt-5">
+	<div class="xl:container xl:mx-auto relative flex flex-col min-h-screen bg-white border-l border-r">
+		<header class="flex justify-between mx-4 md:mx-10 mt-5">
 			<div class="logo"></div>
 
 			<div class="flex justify-between flex-1 self-start pt-2 border-b">
@@ -9,9 +9,9 @@
 			</div>
 		</header>
 
-		<div class="flex-1">
+		<main class="flex-1 mx-4 md:mx-10">
 			<router-view></router-view>
-		</div>
+		</main>
 
 		<Player v-if="albumLoaded" class="sticky left-0 right-0 bottom-0 bg-white" />
 	</div>
@@ -53,9 +53,14 @@ export default {
 
 <style scoped>
 .logo {
-	width: 6.6rem;
-	height: 7.7rem;
+	width: 4.1rem;
+	height: 5.2rem;
 	background-image: url('./assets/logo.svg');
 	background-repeat: no-repeat;
+
+	@screen md {
+		width: 6.6rem;
+		height: 7.7rem;
+	}
 }
 </style>

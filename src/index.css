@@ -16,7 +16,12 @@
 }
 
 html {
-	@apply font-serif text-gray-700;
+	@apply font-sans text-gray-700;
+	font-size: 90%;
+
+	@screen md {
+		font-size: 100%;
+	}
 }
 
 body {

@@ -1,17 +1,19 @@
 <template>
-	<div class="playlist grid grid-cols-2 py-4 px-6 border-t bg-white">
-		<div class="flex-1 p-4 bg-gold bg-opacity-25">
-			<img class="float-left mr-3" src="https://via.placeholder.com/200" />
+	<div class="playlist overflow-auto sm:grid sm:grid-cols-2 sm:gap-6 py-4 px-4 sm:px-6 border-t bg-white">
+		<div class="order-1 sm:sticky top-0 mb-6 sm:mb-0 px-4 pt-4 pb-6 self-start bg-gold bg-opacity-25">
+			<CoverImage class="hidden md:inline float-left mr-3" :width="200" :height="200" :src="album.cover" />
+			<CoverImage class="md:hidden float-left mr-3" :width="100" :height="100" :src="album.cover" />
+
 			<h2 class="mb-2 text-lg">{{ album.title }}</h2>
-			<span class="mt-2 text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</span>
+			<span class="mt-2 text-sm">Lorem ipsum dolor sit ametipsum dolor sit ametipsum dolor sit ametipsum dolor sit amet, ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</span>
 		</div>
 
-		<ul class="flex-1">
+		<ul>
 			<li v-for="track in tracks" :key="track.id">
 				<button
 					@click="$emit('track-click', track)"
 					:class="[
-						'flex justify-between w-full p-2 ml-4 hover:bg-gold hover:bg-opacity-25 cursor-pointer',
+						'flex justify-between w-full p-2 hover:bg-gold hover:bg-opacity-25 cursor-pointer',
 						{'bg-gold bg-opacity-25': track.id === currentTrack?.id}
 					]">
 					<span class="truncate">{{ track.title }}</span>
@@ -23,7 +25,10 @@
 </template>
 
 <script>
+import CoverImage from '/@/components/CoverImage.vue'
+
 export default {
+	components: {CoverImage},
 	props: {
 		album: Object,
 		tracks: Array,
@@ -34,10 +39,15 @@ export default {
 
 <style scoped>
 .playlist {
+	max-height: 50vh;
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 93px;
+	bottom: 128px;
 	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 6px 2px;
+
+	@screen sm {
+		bottom: 86px;
+	}
 }
 </style>
