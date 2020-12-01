@@ -3,7 +3,13 @@ module.exports = {
 		removeDeprecatedGapUtilities: true,
 		purgeLayersByDefault: true,
 	},
-	purge: [],
+	purge: {
+		enabled: process.env.NODE_ENV === 'production',
+		content: [
+			'./public/index.html',
+			'./src/**/*.vue',
+		]
+	},
 	theme: {
 		extend: {
 			colors: {
