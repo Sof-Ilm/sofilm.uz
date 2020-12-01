@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .cover-placeholder {
 	background-color: white;
-	background-image: url('/@/assets/podcast.svg');
+	background-image: url('../assets/podcast.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 80%;
