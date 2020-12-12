@@ -29,7 +29,7 @@ export default {
 
 	actions: {
 		async fetchAlbums ({ commit }, { category }) {
-			const albumsSnap = await db.collection('albums').where('category', '==', category).get()
+			const albumsSnap = await db.collection('albums').where('categories', 'array-contains', category).get()
 			const albums = albumsSnap.docs.map(a => ({id: a.id, ...a.data()}))
 
 			commit('addAlbums', {albums})
