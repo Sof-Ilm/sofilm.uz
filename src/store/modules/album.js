@@ -5,11 +5,13 @@ export default {
 
 	state: {
 		albums: [],
-		category: 'solih-kishilar',
+		category: 'fiqh',
 
 		categories: [
-			{id: 'solih-kishilar', title: 'Solih kishilar'},
 			{id: 'fiqh', title: 'Fiqh'},
+			{id: 'hadis', title: 'Hadis'},
+			{id: 'solih-kishilar', title: 'Solih kishilar'},
+			{id: 'turli-mavzular', title: 'Turli mavzular'},
 		]
 	},
 
@@ -30,7 +32,7 @@ export default {
 	actions: {
 		async fetchAlbums ({ commit }, { category }) {
 			const albumsSnap = await db.collection('albums').where('categories', 'array-contains', category).get()
-			const albums = albumsSnap.docs.map(a => ({id: a.id, ...a.data()}))
+			const albums = albumsSnap.docs.map(a => ({id: a.id, category, ...a.data()}))
 
 			commit('addAlbums', {albums})
 		},
