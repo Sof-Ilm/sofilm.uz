@@ -1,11 +1,10 @@
 <template>
 	<div class="playlist overflow-auto sm:grid sm:grid-cols-2 sm:gap-6 py-4 px-4 sm:px-6 border-t bg-white">
 		<div class="order-1 sm:sticky top-0 mb-6 sm:mb-0 px-4 pt-4 pb-6 self-start bg-gold bg-opacity-25">
-			<CoverImage class="hidden md:inline float-left mr-3" :width="200" :height="200" :src="album.cover" />
-			<CoverImage class="md:hidden float-left mr-3" :width="100" :height="100" :src="album.cover" />
+			<CoverImage class="float-left mr-3" :width="100" :height="100" :src="album.cover" />
 
-			<h2 class="mb-2 text-lg">{{ album.title }}</h2>
-			<span class="mt-2 text-sm">Lorem ipsum dolor sit ametipsum dolor sit ametipsum dolor sit ametipsum dolor sit amet, ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</span>
+			<h2 class="mb-1 text-lg">{{ album.title }}</h2>
+			<span class="text-sm">{{ album.description }}</span>
 		</div>
 
 		<ul>
