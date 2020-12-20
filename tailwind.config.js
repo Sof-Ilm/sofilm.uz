@@ -10,7 +10,7 @@ module.exports = {
 		extend: {
 			colors: {
 				'nobel': '#9f9f9f',
-				'gold': '#ceae55'
+				'gold': '#ceae55',
 			},
 			gridTemplateColumns: {
 				'albums-fill': 'repeat(auto-fill, 200px)',

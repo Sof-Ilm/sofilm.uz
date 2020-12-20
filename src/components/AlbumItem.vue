@@ -4,7 +4,7 @@
 			<CoverImage :width="200" :height="200" :src="album.cover" />
 		</button>
 		<h2 class="mt-3">
-			<button @click="fetchTracks()" class="w-full sm:text-left truncate">{{ album.title }}</button>
+			<button @click="fetchTracks()" class="w-full text-center sm:text-left truncate">{{ album.title }}</button>
 		</h2>
 	</article>
 </template>
