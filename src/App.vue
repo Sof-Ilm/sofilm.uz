@@ -1,10 +1,10 @@
 <template>
 	<div class="xl:container xl:mx-auto relative flex flex-col min-h-screen bg-white border-l border-r">
 		<header class="flex justify-between mx-4 md:mx-10 mt-5">
-			<div v-if="logoVisible" class="logo mt-1 sm:mt-0"></div>
+			<div class="logo mt-1 sm:mt-0"></div>
 
 			<div class="flex justify-between flex-1 self-start pb-2 sm:pb-0 sm:pt-2 border-b">
-				<MainNav @menu-toggle="logoVisible = !$event" />
+				<MainNav />
 				<SearchForm class="w-1/3 self-start" />
 			</div>
 		</header>
@@ -33,7 +33,6 @@ export default {
 	},
 	setup () {
 		const store = useStore()
-		const logoVisible = ref(true)
 		const { value:getAlbums } = computed(() => store.getters['album/getAlbums'])
 
 		watch(() => store.state.album.category, cat => {
@@ -47,7 +46,6 @@ export default {
 
 		return {
 			albumLoaded: computed(() => store.state.player.album),
-			logoVisible,
 		}
 	}
 }
