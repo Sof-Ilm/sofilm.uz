@@ -28,7 +28,6 @@
 					v-for="[ routeName, title, icon ] in menuItems"
 					:key="routeName"
 					:to="{name: routeName}"
-					@click="toggleMenu()"
 					class="w-32 h-32 text-sm text-center border rounded">
 					<component :is="icon" class="block w-14 h-14 mx-auto my-4" />
 					<span class="font-bold uppercase">{{ title }}</span>
@@ -39,7 +38,8 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import AudioBookIcon from '/@/components/icons/AudioBook.vue'
 import FilmRollIcon from '/@/components/icons/FilmRoll.vue'
 import TeamIcon from '/@/components/icons/Team.vue'
@@ -53,6 +53,7 @@ export default {
 		GridIcon,
 	},
 	setup (props, { emit }) {
+		const route = useRoute()
 		const menuOpen = ref(false)
 		const menuItems = ref([
 			['audio-kitoblar', 'Audio kitoblar', 'AudioBookIcon'],
@@ -60,15 +61,19 @@ export default {
 			['biz-haqimizda', 'Biz haqimizda', 'TeamIcon'],
 		])
 
+		const toggleMenu = () => {
+			menuOpen.value = !menuOpen.value
+			document.querySelector('body').style.overflow = menuOpen.value
+				? 'hidden'
+				: 'auto'
+		}
+
+		watch(() => route.name, toggleMenu)
+
 		return {
 			menuOpen,
 			menuItems,
-			toggleMenu: () => {
-				menuOpen.value = !menuOpen.value
-				document.querySelector('body').style.overflow = menuOpen.value
-					? 'hidden'
-					: 'auto'
-			}
+			toggleMenu
 		}
 	}
 }
