@@ -39,7 +39,7 @@ export default {
 <style scoped>
 .playlist {
 	max-height: 50vh;
-	bottom: 115px;
+	bottom: 128px;
 	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 6px 2px;
 
 	@screen sm {
