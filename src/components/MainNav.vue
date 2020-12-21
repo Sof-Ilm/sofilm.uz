@@ -28,7 +28,8 @@
 					v-for="[ routeName, title, icon ] in menuItems"
 					:key="routeName"
 					:to="{name: routeName}"
-					class="w-32 h-32 text-sm text-center border rounded">
+					class="w-32 h-32 text-sm text-center border rounded"
+					active-class="text-gold">
 					<component :is="icon" class="block w-14 h-14 mx-auto my-4" />
 					<span class="font-bold uppercase">{{ title }}</span>
 				</router-link>
@@ -68,7 +69,7 @@ export default {
 				: 'auto'
 		}
 
-		watch(() => route.name, toggleMenu)
+		watch( () => route.name, () => menuOpen.value = false)
 
 		return {
 			menuOpen,
