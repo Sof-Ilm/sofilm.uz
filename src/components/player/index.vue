@@ -7,9 +7,9 @@
 			:current-track="currentTrack"
 			@track-click="playTrack($event)" />
 
-		<audio crossorigin="anonymous" controls></audio>
+		<audio class="w-full" crossorigin="anonymous" controls></audio>
 
-		<div class="flex justify-between px-4 sm:px-8">
+		<div class="flex justify-between px-4 sm:px-8 bg-gray-100">
 			<div class="flex flex-col sm:flex-row justify-center sm:items-center h-32 sm:h-20">
 				<Controls
 					:is-playing="isPlaying"
@@ -21,8 +21,8 @@
 					@play-toggle-click="togglePlayback"
 					@playlist-click="togglePlaylist" />
 
-				<div v-if="currentTrack" class="order-first sm:order-none sm:block mb-4 sm:mb-0 sm:ml-20 max-w-lg">
-					<h5 class="truncate pb-1 text-lg">{{ currentTrack.title }}</h5>
+				<div v-if="currentTrack" class="order-first sm:order-none sm:block mb-5 sm:mb-0 sm:ml-20 max-w-lg">
+					<h5 class="truncate text-lg">{{ currentTrack.title }}</h5>
 					<h6 class="text-sm text-gray-500">{{ album.title }}</h6>
 				</div>
 			</div>

@@ -37,14 +37,6 @@ input:focus, button:focus {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.plyr,
-.plyr__progress input[type="range"],
-.plyr__progress__buffer {
-	width: 100% !important;
-}
-.plyr__progress {
-	margin-right: 0 !important;
-}
 .plyr__tooltip {
 	padding: 8px !important;
 }

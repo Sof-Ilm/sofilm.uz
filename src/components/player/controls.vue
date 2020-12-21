@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="sm:leading-none">
 		<button
 			:class="['text-nobel', {'opacity-50 cursor-default': !prev}]"
 			@click="prev && $emit('prev-click')">

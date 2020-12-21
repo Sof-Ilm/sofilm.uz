@@ -1,5 +1,5 @@
 <template>
-	<nav class="hidden sm:flex">
+	<nav class="hidden md:flex">
 		<router-link
 			v-for="[ routeName, title, icon ] in menuItems"
 			:key="routeName"
@@ -10,7 +10,7 @@
 		</router-link>
 	</nav>
 
-	<div class="flex justify-end w-full sm:hidden">
+	<div class="flex justify-end w-full md:hidden">
 		<button
 			@click="toggleMenu()"
 			:class="['w-full pr-6 text-xl uppercase text-center font-bold text-gold', {invisible: menuOpen}]">
@@ -22,7 +22,7 @@
 	</div>
 
 	<teleport v-if="menuOpen" to="#app">
-		<div class="sm:hidden absolute top-0 bottom-0 left-0 right-0 z-20 p-4 bg-white">
+		<div class="md:hidden absolute top-0 bottom-0 left-0 right-0 z-20 p-4 bg-white">
 			<div class="mobile-nav">
 				<router-link
 					v-for="[ routeName, title, icon ] in menuItems"

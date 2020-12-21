@@ -1,5 +1,5 @@
 <template>
-	<img class="md:w-4/6 mt-6 md:-mt-10 mb-6 md:mb-10 mx-auto" src="/@/assets/bismillah.svg" />
+	<Banner />
 
 	<CategoryNav />
 
@@ -15,11 +15,13 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import Banner from '/@/components/Banner.vue'
 import CategoryNav from '/@/components/CategoryNav.vue'
 import AlbumItem from '/@/components/AlbumItem.vue'
 
 export default {
 	components: {
+		Banner,
 		CategoryNav,
 		AlbumItem,
 	},
