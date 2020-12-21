@@ -1,9 +1,9 @@
 <template>
 	<div class="xl:container xl:mx-auto relative flex flex-col min-h-screen bg-white border-l border-r">
 		<header class="flex justify-between mx-4 md:mx-10 mt-5">
-			<div class="logo mt-1 sm:mt-0"></div>
+			<div class="logo mt-1 md:mt-0"></div>
 
-			<div class="flex justify-between flex-1 self-start pb-2 sm:pb-0 sm:pt-2 border-b">
+			<div class="flex justify-between flex-1 self-start pb-2 md:pb-0 md:pt-2 border-b">
 				<MainNav />
 				<SearchForm class="w-1/3 self-start" />
 			</div>
