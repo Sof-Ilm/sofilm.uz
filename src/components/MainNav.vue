@@ -59,14 +59,14 @@ export default {
 		const menuOpen = ref(false)
 		const menuItems = router.getRoutes().filter(r => r.meta.title)
 
-		const toggleMenu = () => {
-			menuOpen.value = !menuOpen.value
+		const toggleMenu = (val = !menuOpen.value) => {
+			menuOpen.value = val
 			document.querySelector('body').style.overflow = menuOpen.value
 				? 'hidden'
 				: 'auto'
 		}
 
-		watch(() => route.name, () => menuOpen.value = false)
+		watch(() => route.name, () => toggleMenu(false))
 
 		return {
 			route,
