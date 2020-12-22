@@ -1,7 +1,12 @@
 <template>
 	<div
-		class="cover-placeholder rounded border bg-white bg-no-repeat bg-center"
-		:style="{width: `${width}px`, height: `${height}px`}">
+		class="rounded border bg-white bg-no-repeat bg-center"
+		:style='{
+			width: `${width}px`,
+			height: `${height}px`,
+			backgroundSize: "60%",
+			backgroundImage: src ? "none" : `url("/@/assets/podcast.svg")`
+		}'>
 		<div
 			v-if="src"
 			class="bg-no-repeat bg-center bg-cover"
@@ -23,10 +28,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped>
-.cover-placeholder {
-	background-image: url('../assets/podcast.svg');
-	background-size: 80%;
-}
-</style>
