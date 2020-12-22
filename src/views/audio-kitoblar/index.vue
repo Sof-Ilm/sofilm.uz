@@ -3,7 +3,7 @@
 
 	<CategoryNav />
 
-	<section class="sm:grid sm:grid-cols-albums-fill sm:justify-between">
+	<section class="sm:grid sm:grid-cols-albums-fill sm:justify-between md:gap-3">
 		<AlbumItem
 			v-for="album in getAlbums()"
 			:key="album.id"
