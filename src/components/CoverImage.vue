@@ -1,15 +1,15 @@
 <template>
 	<div
-		class="cover-placeholder"
+		class="cover-placeholder rounded border bg-white bg-no-repeat bg-center"
 		:style="{width: `${width}px`, height: `${height}px`}">
 		<div
 			v-if="src"
-			class="img"
-			:style="{
+			class="bg-no-repeat bg-center bg-cover"
+			:style='{
 				width: `${width}px`,
 				height: `${height}px`,
-				backgroundImage: `url(${src})`
-			}">
+				backgroundImage: `url("${src}")`
+			}'>
 		</div>
 	</div>
 </template>
@@ -20,22 +20,13 @@ export default {
 		src: String,
 		width: Number,
 		height: Number,
-	}
+	},
 }
 </script>
 
 <style scoped>
 .cover-placeholder {
-	background-color: white;
 	background-image: url('../assets/podcast.svg');
-	background-repeat: no-repeat;
-	background-position: center;
 	background-size: 80%;
-
-	.img {
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: 100%;
-	}
 }
 </style>
