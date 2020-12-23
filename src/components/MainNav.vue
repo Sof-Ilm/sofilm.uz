@@ -4,7 +4,7 @@
 			v-for="{ name, meta } in menuItems"
 			:key="name"
 			:to="{name}"
-			class="pb-2 text-lg lg:text-xl uppercase mx-4 border-b-2 border-transparent"
+			class="pb-2 text-lg lg:text-xl uppercase mx-4 border-b-2 border-transparent no-underline"
 			active-class="border-gold text-gold">
 			<component :is="meta.icon" class="inline-block w-6 h-6 mb-1 mr-2" />{{ meta.title }}
 		</router-link>
@@ -28,7 +28,7 @@
 					v-for="{ name, meta } in menuItems"
 					:key="name"
 					:to="{name}"
-					class="w-32 h-32 text-sm text-center border rounded"
+					class="w-32 h-32 text-sm text-center border rounded no-underline"
 					active-class="text-gold">
 					<component :is="meta.icon" class="block w-14 h-14 mx-auto my-4" />
 					<span class="font-bold uppercase">{{ meta.title }}</span>

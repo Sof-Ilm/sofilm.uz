@@ -4,7 +4,7 @@
 			v-for="{ name, meta } in categories"
 			:key="name"
 			:to="{name}"
-			class="mr-6 pb-2 border-b-2 border-transparent uppercase hover:text-gold cursor-pointer"
+			class="mr-6 pb-2 border-b-2 border-transparent uppercase hover:text-gold cursor-pointer no-underline"
 			active-class="border-gold text-gold">
 			{{ meta.title }}
 		</router-link>
