@@ -4,6 +4,12 @@ import AlbumList from '/@/views/audio-kitoblar/album-list.vue'
 
 const routes = [
 	{
+		name: 'not-found',
+		path: '/:pathMatch(.*)*',
+		component: import('/@/views/not-found.vue')
+	},
+	{
+		name: 'home',
 		path: '/',
 		redirect: {name: 'audio-kitoblar/fiqh'}
 	},

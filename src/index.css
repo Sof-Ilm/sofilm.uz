@@ -15,27 +15,24 @@
 	--plyr-range-thumb-active-shadow-width: 0;
 }
 
-html {
-	@apply font-sans text-gray-700;
-	font-size: 90%;
+@layer base {
+	html {
+		font-size: 90%;
 
-	@screen md {
-		font-size: 100%;
+		@screen md {
+			font-size: 100%;
+		}
+	}
+
+	a {
+		@apply underline;
+	}
+
+	input, button {
+		@apply focus:outline-none;
 	}
 }
 
-body {
-	background-color: #eee;
-}
-
-input:focus, button:focus {
-	outline: none;
-}
-
-#app {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
 
 .plyr__tooltip {
 	padding: 8px !important;
