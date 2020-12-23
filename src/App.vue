@@ -19,7 +19,7 @@
 
 <script>
 import { useStore } from 'vuex'
-import { ref, computed, watch } from 'vue'
+import { computed } from 'vue'
 import SearchForm from '/@/components/SearchForm.vue'
 import MainNav from '/@/components/MainNav.vue'
 import Player from '/@/components/player/index.vue'
@@ -33,16 +33,6 @@ export default {
 	},
 	setup () {
 		const store = useStore()
-		const { value:getAlbums } = computed(() => store.getters['album/getAlbums'])
-
-		watch(() => store.state.album.category, cat => {
-			if (cat) {
-				if (getAlbums(cat).length) {
-					return
-				}
-				store.dispatch('album/fetchAlbums', {category: cat})
-			}
-		}, {immediate: true})
 
 		return {
 			albumLoaded: computed(() => store.state.player.album),
