@@ -5,18 +5,10 @@ export default {
 
 	state: {
 		albums: [],
-		category: 'fiqh',
-
-		categories: [
-			{id: 'fiqh', title: 'Fiqh'},
-			{id: 'hadis', title: 'Hadis'},
-			{id: 'solih-kishilar', title: 'Solih kishilar'},
-			{id: 'turli-mavzular', title: 'Turli mavzular'},
-		]
 	},
 
 	getters: {
-		getAlbums: state => (category = state.category) => 
+		getAlbums: state => (category) => 
 			state.albums.filter(a => a.category === category)
 	},
 
@@ -24,9 +16,6 @@ export default {
 		addAlbums (state, { albums }) {
 			state.albums = state.albums.concat(albums)
 		},
-		setCategory (state, { category }) {
-			state.category = category
-		}
 	},
 
 	actions: {

@@ -57,7 +57,7 @@ export default {
 		const route = useRoute()
 		const router = useRouter()
 		const menuOpen = ref(false)
-		const menuItems = router.getRoutes().filter(r => r.meta.title)
+		const menuItems = router.getRoutes().filter(r => r.meta.mainNav)
 
 		const toggleMenu = (val = !menuOpen.value) => {
 			menuOpen.value = val
