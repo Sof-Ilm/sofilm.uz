@@ -14,7 +14,7 @@
 		<button
 			@click="toggleMenu()"
 			:class="['w-full pr-6 text-xl uppercase text-center font-bold text-gold', {invisible: menuOpen}]">
-			<component :is="route.meta.icon" class="inline-block w-6 h-6 mb-1 mr-2" />{{ route.meta.title }}
+			<component :is="currentNavRoute.meta.icon" class="inline-block w-6 h-6 mb-1 mr-2" />{{ currentNavRoute.meta.title }}
 		</button>
 		<button @click="toggleMenu()" :class="['z-30', {'text-gold': menuOpen}]">
 			<GridIcon class="block w-6" />
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import AudioBookIcon from '/@/components/icons/AudioBook.vue'
 import FilmRollIcon from '/@/components/icons/FilmRoll.vue'
@@ -57,6 +57,10 @@ export default {
 		const route = useRoute()
 		const router = useRouter()
 		const menuOpen = ref(false)
+		const currentNavRoute = computed(() => {
+			const navRoute = route.matched.find(r => r.meta.mainNav)
+			return navRoute ? navRoute : route
+		})
 		const menuItems = router.getRoutes().filter(r => r.meta.mainNav)
 
 		const toggleMenu = (val = !menuOpen.value) => {
@@ -69,7 +73,7 @@ export default {
 		watch(() => route.name, () => toggleMenu(false))
 
 		return {
-			route,
+			currentNavRoute,
 			menuOpen,
 			menuItems,
 			toggleMenu
