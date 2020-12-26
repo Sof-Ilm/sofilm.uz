@@ -19,6 +19,7 @@ module.exports = {
 				'album': '202px'
 			},
 			screens: {
+				'mobile-landscape': {'raw': 'screen and (max-width: 900px) and (orientation: landscape)'},
 				'can-hover': {'raw': '(hover: hover)'},
 				'cannot-hover': {'raw': '(hover: none)'},
 			},

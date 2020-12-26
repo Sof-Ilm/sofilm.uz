@@ -7,7 +7,7 @@
 				<button class="py-3 rounded-bl bg-white hover:text-gold border-r" @click="fetchTracks()">
 					<AudioBookIcon class="w-full h-6" />
 				</button>
-				<button class="py-3 rounded-br bg-white hover:text-gold">
+				<button class="py-3 rounded-br bg-white hover:text-gold" @click="$emit('video-click')">
 					<FilmRollIcon class="w-full h-6" />
 				</button>
 			</div>

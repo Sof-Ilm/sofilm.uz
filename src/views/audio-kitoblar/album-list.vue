@@ -4,18 +4,27 @@
 			v-for="album in getAlbums(category)"
 			:key="album.id"
 			class="mb-10"
-			:album="album" />
+			:album="album"
+			@video-click="videoPlayerVisible = true" />
 	</section>
+
+	<teleport v-if="videoPlayerVisible" to="body">
+		<VideoPlayer @back-click="videoPlayerVisible = false" />
+	</teleport>
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import { computed, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import AlbumItem from '/@/components/AlbumItem.vue'
+import VideoPlayer from '/@/components/video-player/index.vue'
 
 export default {
-	components: {AlbumItem},
+	components: {
+		AlbumItem,
+		VideoPlayer,
+	},
 	setup () {
 		const route = useRoute()
 		const store = useStore()
@@ -35,7 +44,8 @@ export default {
 
 		return {
 			getAlbums,
-			category
+			category,
+			videoPlayerVisible: ref(false)
 		}
 	}
 }
