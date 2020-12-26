@@ -15,6 +15,13 @@ module.exports = {
 			gridTemplateColumns: {
 				'albums-fill': 'repeat(auto-fill, 200px)',
 			},
+			width: {
+				'album': '202px'
+			},
+			screens: {
+				'can-hover': {'raw': '(hover: hover)'},
+				'cannot-hover': {'raw': '(hover: none)'},
+			},
 		},
 		fontFamily: {
 			'sans': ['Arsenal', 'sans-serif'],
