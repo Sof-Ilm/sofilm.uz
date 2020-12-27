@@ -30,7 +30,9 @@ module.exports = {
 					}
 				]
 			},
-			workbox: {},
+			workbox: {
+				mode: process.env.NODE_ENV
+			},
 		})
 	],
 	alias: {
