@@ -21,8 +21,8 @@
 		</button>
 	</div>
 
-	<teleport v-if="menuOpen" to="#app">
-		<div class="md:hidden absolute top-0 bottom-0 left-0 right-0 z-20 p-4 bg-white">
+	<teleport v-if="menuOpen" to="body">
+		<div class="md:hidden fixed inset-0 z-20 p-4 bg-white">
 			<div class="mobile-nav">
 				<router-link
 					v-for="{ name, meta } in menuItems"
@@ -65,9 +65,9 @@ export default {
 
 		const toggleMenu = (val = !menuOpen.value) => {
 			menuOpen.value = val
-			document.querySelector('body').style.overflow = menuOpen.value
-				? 'hidden'
-				: 'auto'
+
+			document.querySelector('body').classList
+				[val ? 'add' : 'remove']('overflow-hidden', 'fixed', 'inset-0')
 		}
 
 		watch(() => route.name, () => toggleMenu(false))
