@@ -87,6 +87,12 @@ export default {
 			playlistVisible.value = !playlistVisible.value
 		}
 
+		watch(() => store.state.videoPlayer.album, videoAlbum => {
+			if (videoAlbum) {
+				player.pause()
+			}
+		})
+
 		onMounted(() => {
 			player = new Plyr('#audio-player audio', {
 				controls: ['progress']
