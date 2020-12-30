@@ -1,5 +1,5 @@
 <template>
-	<div id="main-player">
+	<div id="audio-player">
 		<Playlist
 			v-if="playlistVisible"
 			:album="album"
@@ -43,7 +43,7 @@ import VolumeControl from './volume-control.vue'
 let player = {}
 
 export default {
-	name: 'Player',
+	name: 'AudioPlayer',
 	components: {
 		Playlist,
 		Controls,
@@ -54,7 +54,7 @@ export default {
 		const playlistVisible = ref(true)
 		const currentTrack = ref(null)
 
-		const tracks = computed(() => store.state.player.playlist)
+		const tracks = computed(() => store.state.audioPlayer.playlist)
 		let isPlaying = ref(false)
 		let prevAvailable = ref(false)
 		let nextAvailable = ref(false)
@@ -88,7 +88,7 @@ export default {
 		}
 
 		onMounted(() => {
-			player = new Plyr('#main-player audio', {
+			player = new Plyr('#audio-player audio', {
 				controls: ['progress']
 			})
 			player.on('play', () => {
@@ -107,7 +107,7 @@ export default {
 		})
 
 		return {
-			album: computed(() => store.state.player.album),
+			album: computed(() => store.state.audioPlayer.album),
 			tracks,
 			playlistVisible,
 			currentTrack,

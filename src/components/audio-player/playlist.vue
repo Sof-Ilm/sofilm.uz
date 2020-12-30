@@ -1,5 +1,5 @@
 <template>
-	<div class="playlist absolute left-0 right-0 overflow-auto sm:grid sm:grid-cols-2 sm:gap-6 py-4 px-4 sm:px-6 border-t bg-gray-50">
+	<div class="playlist absolute left-0 right-0 overflow-auto sm:grid sm:grid-cols-2 sm:gap-6 py-4 px-4 sm:px-6 border-t bg-gray-100">
 		<div class="order-1 sm:sticky top-0 mb-6 sm:mb-0 px-4 pt-4 pb-6 self-start bg-gold rounded bg-opacity-20" style="min-height:130px">
 			<CoverImage class="float-left mr-3" :width="100" :height="100" :src="album.cover" />
 

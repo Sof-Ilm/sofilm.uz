@@ -28,7 +28,11 @@ module.exports = {
 			'sans': ['Arsenal', 'sans-serif'],
 		}
 	},
-	variants: {},
+	variants: {
+		extend: {
+			borderRadius: ['first', 'last']
+		}
+	},
 	plugins: [
 		require('@tailwindcss/typography')
 	],
