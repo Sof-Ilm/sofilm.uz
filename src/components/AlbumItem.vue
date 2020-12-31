@@ -3,16 +3,16 @@
 		<div class="mx-auto w-album sm:w-full relative rounded border group">
 			<CoverImage :width="200" :height="200" :src="album.cover" />
 
-			<div class="can-hover:absolute bottom-0 flex can-hover:opacity-0 group-hover:opacity-100">
+			<div class="w-full can-hover:absolute bottom-0 flex can-hover:opacity-0 group-hover:opacity-100">
 				<button
 					v-if="album.hasAudio"
-					class="py-3 first:rounded-bl last:rounded-br bg-white hover:text-gold border-r"
+					class="w-full py-3 first:rounded-bl last:rounded-br bg-white hover:text-gold border-r"
 					@click="fetchTracks()">
 					<AudioBookIcon class="w-full h-6" />
 				</button>
 				<button
 					v-if="album.youtubePlaylistId"
-					class="py-3 first:rounded-bl last:rounded-br bg-white hover:text-gold"
+					class="w-full py-3 first:rounded-bl last:rounded-br bg-white hover:text-gold"
 					@click="fetchVideos()">
 					<FilmRollIcon class="w-full h-6" />
 				</button>
