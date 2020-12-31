@@ -1,26 +1,26 @@
 <template>
 	<div class="fixed inset-0 z-30 bg-black bg-opacity-80">
-		<div class="mobile-landscape:flex h-full w-full lg:w-11/12 xl:w-3/4 mx-auto bg-gray-100">
+		<div class="mobile-landscape:flex h-full w-full lg:w-11/12 xl:w-4/6 mx-auto bg-smoke-200">
 			<div class="mobile-landscape:w-3/5 h-2/6 md:h-4/6 mobile-landscape:h-full">
 				<iframe
 					v-if="currentVideo"
 					width="100%"
 					height="100%"
-					:src="`https://www.youtube-nocookie.com/embed/${currentVideo.id}?rel=0`"
+					:src=`https://www.youtube.com/embed/${currentVideo.id}?rel=0`
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen>
 				</iframe>
 			</div>
 
-			<div class="mobile-landscape:w-2/5 h-4/6 md:h-2/6 mobile-landscape:h-full lg:grid lg:grid-cols-2 lg:gap-6 py-4 px-4 lg:px-6 overflow-auto border-l border-r">
+			<div class="mobile-landscape:w-2/5 h-4/6 md:h-2/6 mobile-landscape:h-full lg:grid lg:grid-cols-2 lg:gap-6 py-4 px-4 lg:px-6 overflow-auto">
 				<div class="order-1 lg:sticky top-0 mb-4 lg:mb-0 self-start">
 					<button class="mb-6 text-lg font-bold rounded uppercase text-gray-500" @click="$emit('back-click')">
 						&larr;<span class="ml-3">Orqaga qaytish</span>
 					</button>
 
 					<div class="px-4 pt-4 pb-6 bg-gold rounded bg-opacity-20" style="min-height:130px">
-						<CoverImage class="float-left mr-3" :width="100" :height="100" src="" />
+						<CoverImage class="float-left mr-3" :width="100" :height="100" :src="album.cover" />
 
 						<h2 class="mb-1 text-lg font-bold">{{ album.title }}</h2>
 						<span class="text-sm">{{ album.description }}</span>

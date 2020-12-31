@@ -17,7 +17,7 @@ export async function getPlaylistVideos (playlistId) {
 	const playlistItemsUrl = new URL('https://youtube.googleapis.com/youtube/v3/playlistItems')
 
 	playlistItemsUrl.searchParams.append('part', 'contentDetails')
-	playlistItemsUrl.searchParams.append('maxResults', 1)
+	playlistItemsUrl.searchParams.append('maxResults', '50')
 	playlistItemsUrl.searchParams.append('playlistId', playlistId)
 	playlistItemsUrl.searchParams.append('key', import.meta.env.VITE_YOUTUBE_API_KEY)
 	
