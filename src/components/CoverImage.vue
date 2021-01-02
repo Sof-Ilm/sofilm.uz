@@ -1,9 +1,9 @@
 <template>
 	<div
-		class="rounded border bg-white bg-no-repeat bg-center"
+		class="rounded bg-white bg-no-repeat bg-center"
 		:style='{
-			width: `${width+2}px`,
-			height: `${height+2}px`,
+			width: `${width}px`,
+			height: `${height}px`,
 			backgroundSize: "60%",
 			backgroundImage: src ? "none" : `url("/@/assets/podcast.svg")`
 		}'>
