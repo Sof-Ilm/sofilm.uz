@@ -5,7 +5,8 @@
 			:album="album"
 			:tracks="tracks"
 			:current-track="currentTrack"
-			@track-click="playTrack($event)" />
+			@track-click="playTrack($event)"
+			@close-click="togglePlaylist()" />
 
 		<audio class="w-full" crossorigin="anonymous" controls></audio>
 
@@ -16,9 +17,9 @@
 					:playlist-visible="playlistVisible"
 					:prev="prevAvailable"
 					:next="nextAvailable"
-					@prev-click="prevTrack"
-					@next-click="nextTrack"
-					@play-toggle-click="togglePlayback"
+					@prev-click="prevTrack()"
+					@next-click="nextTrack()"
+					@play-toggle-click="togglePlayback()"
 					@playlist-click="togglePlaylist" />
 
 				<div v-if="currentTrack" class="order-first sm:order-none sm:block mb-5 sm:mb-0 sm:ml-20 max-w-lg">
