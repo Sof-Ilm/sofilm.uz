@@ -13,7 +13,11 @@
 			<router-view></router-view>
 		</main>
 
-		<Player v-if="albumLoaded" class="sticky left-0 right-0 bottom-0 bg-white" />
+		<AudioPlayer v-if="audioAlbumLoaded" class="sticky left-0 right-0 bottom-0 bg-white" />
+
+		<teleport v-if="videoAlbumLoaded" to="body">
+			<VideoPlayer @back-click="unloadVideoAlbum" />
+		</teleport>
 	</div>
 </template>
 
@@ -22,20 +26,27 @@ import { useStore } from 'vuex'
 import { computed } from 'vue'
 import SearchForm from '/@/components/SearchForm.vue'
 import MainNav from '/@/components/MainNav.vue'
-import Player from '/@/components/player/index.vue'
+import AudioPlayer from '/@/components/audio-player/index.vue'
+import VideoPlayer from '/@/components/video-player/index.vue'
 
 export default {
 	name: 'App',
 	components: {
-		SearchForm,
 		MainNav,
-		Player
+		SearchForm,
+		AudioPlayer,
+		VideoPlayer,
 	},
 	setup () {
 		const store = useStore()
 
 		return {
-			albumLoaded: computed(() => store.state.player.album),
+			audioAlbumLoaded: computed(() => store.state.audioPlayer.album),
+			videoAlbumLoaded: computed(() => store.state.videoPlayer.album),
+			unloadVideoAlbum () {
+				store.commit('videoPlayer/setAlbum', {album: null})
+				store.commit('videoPlayer/setPlaylist', {videos: null})
+			}
 		}
 	}
 }

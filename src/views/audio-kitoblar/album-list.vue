@@ -11,11 +11,13 @@
 <script>
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import { computed, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import AlbumItem from '/@/components/AlbumItem.vue'
 
 export default {
-	components: {AlbumItem},
+	components: {
+		AlbumItem,
+	},
 	setup () {
 		const route = useRoute()
 		const store = useStore()
@@ -35,7 +37,7 @@ export default {
 
 		return {
 			getAlbums,
-			category
+			category,
 		}
 	}
 }
