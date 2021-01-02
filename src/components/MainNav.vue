@@ -41,16 +41,10 @@
 <script>
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import AudioBookIcon from '/@/components/icons/AudioBook.vue'
-import FilmRollIcon from '/@/components/icons/FilmRoll.vue'
-import TeamIcon from '/@/components/icons/Team.vue'
 import GridIcon from '/@/components/icons/Grid.vue'
 
 export default {
 	components: {
-		AudioBookIcon,
-		FilmRollIcon,
-		TeamIcon,
 		GridIcon,
 	},
 	setup (props, { emit }) {
