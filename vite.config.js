@@ -7,7 +7,7 @@ module.exports = {
 			manifest: {
 				'name': 'Sof Ilm',
 				'short_name': 'Sof Ilm',
-				'start_url': '/audio-kitoblar/fiqh',
+				'start_url': '/mavzular/fiqh',
 				'display': 'standalone',
 				'background_color': '#fff',
 				'description': 'sofilm.uz',

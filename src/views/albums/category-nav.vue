@@ -20,7 +20,7 @@ export default {
 		const route = useRoute()
 		const router = useRouter()
 		const categories = router.getRoutes()
-			.find(r => r.name === 'audio-kitoblar')
+			.find(r => r.name === 'mavzular')
 			.children
 		
 		return {

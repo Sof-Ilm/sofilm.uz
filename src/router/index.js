@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AudioKitoblar from '/@/views/audio-kitoblar/index.vue'
-import AlbumList from '/@/views/audio-kitoblar/album-list.vue'
+import Albums from '/@/views/albums/index.vue'
+import AlbumList from '/@/views/albums/album-list.vue'
+import BooksIcon from '/@/components/icons/Books.vue'
+import MasjidIcon from '/@/components/icons/Masjid.vue'
 
 const routes = [
 	{
@@ -11,21 +13,21 @@ const routes = [
 	{
 		name: 'home',
 		path: '/',
-		redirect: {name: 'audio-kitoblar/fiqh'}
+		redirect: {name: 'mavzular/fiqh'}
 	},
 	{
-		name: 'audio-kitoblar',
-		path: '/audio-kitoblar',
-		redirect: {name: 'audio-kitoblar/fiqh'},
-		component: AudioKitoblar,
+		name: 'mavzular',
+		path: '/mavzular',
+		redirect: {name: 'mavzular/fiqh'},
+		component: Albums,
 		meta: {
 			mainNav: true,
-			title: 'Audio kitoblar',
-			icon: 'AudioBookIcon',
+			title: 'Mavzular',
+			icon: BooksIcon,
 		},
 		children: [
 			{
-				name: 'audio-kitoblar/fiqh',
+				name: 'mavzular/fiqh',
 				path: 'fiqh',
 				component: AlbumList,
 				meta: {
@@ -33,7 +35,7 @@ const routes = [
 				},
 			},
 			{
-				name: 'audio-kitoblar/hadis',
+				name: 'mavzular/hadis',
 				path: 'hadis',
 				component: AlbumList,
 				meta: {
@@ -41,7 +43,7 @@ const routes = [
 				},
 			},
 			{
-				name: 'audio-kitoblar/solih-kishilar',
+				name: 'mavzular/solih-kishilar',
 				path: 'solih-kishilar',
 				component: AlbumList,
 				meta: {
@@ -49,7 +51,7 @@ const routes = [
 				},
 			},
 			{
-				name: 'audio-kitoblar/turli-mavzular',
+				name: 'mavzular/turli-mavzular',
 				path: 'turli-mavzular',
 				component: AlbumList,
 				meta: {
@@ -59,23 +61,13 @@ const routes = [
 		]
 	},
 	{
-		name: 'video-tasvirlar',
-		path: '/video-tasvirlar',
-		component: AudioKitoblar,
-		meta: {
-			mainNav: true,
-			title: 'Video tasvirlar',
-			icon: 'FilmRollIcon',
-		}
-	},
-	{
 		name: 'biz-haqimizda',
 		path: '/biz-haqimizda',
-		component: () => import('/@/views/biz-haqimizda/index.vue'),
+		component: () => import('/@/views/about-us/index.vue'),
 		meta: {
 			mainNav: true,
 			title: 'Biz haqimizda',
-			icon: 'TeamIcon',
+			icon: MasjidIcon,
 		}
 	}
 ]
