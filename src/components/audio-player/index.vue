@@ -1,5 +1,5 @@
 <template>
-	<div id="audio-player">
+	<div id="audio-player" style="touch-action: none">
 		<Playlist
 			v-if="playlistVisible"
 			:album="album"
