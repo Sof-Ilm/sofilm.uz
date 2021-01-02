@@ -38,13 +38,16 @@
 	padding: 8px !important;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-moz-range-track {
 	border-radius: 0 !important;
 }
-input[type=range]::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
 	visibility: hidden !important;
 }
 
-.plyr__progress__buffer::-webkit-progress-value {
+.plyr__progress__buffer::-webkit-progress-value,
+.plyr__progress__buffer::-moz-range-progress {
 	display: none !important;
 }
