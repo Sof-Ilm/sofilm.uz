@@ -1,11 +1,10 @@
 <template>
 	<div
-		class="rounded bg-white bg-no-repeat bg-center"
+		:class="['rounded bg-white bg-no-repeat bg-center', {'bg-img-podcast': !src}]"
 		:style='{
 			width: `${width}px`,
 			height: `${height}px`,
-			backgroundSize: "60%",
-			backgroundImage: src ? "none" : `url("/@/assets/podcast.svg")`
+			backgroundSize: "60%"
 		}'>
 		<div
 			v-if="src"
@@ -28,3 +27,9 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+.bg-img-podcast {
+	background-image: url('/src/assets/podcast.svg')
+}
+</style>
