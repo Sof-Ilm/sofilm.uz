@@ -1,5 +1,5 @@
 <template>
-	<header class="flex justify-between mx-4 md:mx-10 mt-2">
+	<header class="flex justify-between mx-4 md:mx-10 mt-4 sm:mt-2">
 		<div class="logo mt-1 md:mt-2"></div>
 
 		<div class="flex justify-between flex-1 self-start pb-2 md:pb-0 border-b">
@@ -23,7 +23,7 @@
 import { useStore } from 'vuex'
 import { computed, defineAsyncComponent } from 'vue'
 import SearchForm from '/@/components/SearchForm.vue'
-import MainNav from '/@/components/MainNav.vue'
+import MainNav from '/@/components/main-nav/index.vue'
 
 export default {
 	name: 'App',

@@ -1,6 +1,5 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import 'firebase/analytics'
 
 firebase.initializeApp({
 	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -9,7 +8,11 @@ firebase.initializeApp({
 	appId: import.meta.env.VITE_FIREBASE_APP_ID,
 	measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 })
-firebase.analytics()
+
+if (process.env.NODE_ENV === 'production') {
+	import('firebase/analytics')
+		.then(() => firebase.analytics())
+}
 
 export const ERR_PERMISSION = 'PERMISSION_DENIED'
 export const db = firebase.firestore()
