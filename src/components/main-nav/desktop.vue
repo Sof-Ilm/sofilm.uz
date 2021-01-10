@@ -13,10 +13,17 @@
 					<button
 						@click="$emit('toggle-subnav', {name, meta, children})"
 						:class="[
-							'pb-2 border-b-2 border-transparent text-lg lg:text-xl uppercase hover:border-gold',
+							'pb-2 border-b-2 border-transparent text-lg lg:text-xl uppercase font-bold hover:border-gold',
 							{'border-none': subnavRoute.name === name}
 						]">
-						<component :is="meta.icon" class="inline w-6 h-6 mb-1 mr-2" />{{ currentChildRoute?.meta.title || meta.title }}
+						<component :is="meta.icon" class="inline w-6 h-6 mb-1 mr-2" />
+						<span>{{ meta.title }}</span>
+
+						<template v-if="currentChildRoute">
+							<span class="text-2xl leading-none px-2">&raquo;</span>
+							<span>{{ currentChildRoute.meta.title }}</span>
+						</template>
+
 						<CaretIcon class="inline w-3 h-3 mb-1 ml-2" />
 					</button>
 
@@ -28,7 +35,7 @@
 							<li v-for="{ name, meta } in children" :key="name" class="py-1 text-left">
 								<router-link
 									:to="{name}"
-									class="whitespace-nowrap uppercase cursor-pointer no-underline hover:underline"
+									class="text-lg whitespace-nowrap uppercase cursor-pointer no-underline hover:underline"
 									active-class="text-gold">
 									{{ meta.title }}
 								</router-link>
@@ -42,8 +49,9 @@
 				<router-link
 					:to="{name}"
 					class="no-underline">
-					<span class="block pb-2 border-b-2 border-transparent text-lg lg:text-xl uppercase hover:border-gold">
-						<component :is="meta.icon" class="inline w-6 h-6 mb-1 mr-2" />{{ meta.title }}
+					<span class="block pb-2 border-b-2 border-transparent text-lg lg:text-xl uppercase font-bold hover:border-gold">
+						<component :is="meta.icon" class="inline w-6 h-6 mb-1 mr-2" />
+						<span>{{ meta.title }}</span>
 					</span>
 				</router-link>
 			</div>

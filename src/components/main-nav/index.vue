@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref, shallowRef, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import DesktopNav from './desktop.vue'
 import MobileNav from './mobile.vue'
@@ -38,8 +38,11 @@ export default {
 	setup (props, { emit }) {
 		const route = useRoute()
 		const router = useRouter()
+
 		const mobileNavOpen = ref(false)
-		const subnavRoute = ref({})
+		const subnavRoute = shallowRef({})
+		const navItems = router.getRoutes().filter(r => r.meta.mainNav)
+
 		const currentNavRoute = computed(() => {
 			const navRoute = route.matched.find(r => r.meta.mainNav)
 			return navRoute ? navRoute : route
@@ -49,7 +52,6 @@ export default {
 				? route.matched[route.matched.length - 1]
 				: null
 		})
-		const navItems = router.getRoutes().filter(r => r.meta.mainNav)
 		const mobileNavItems = computed(() => {
 			if (subnavRoute.value.name) {
 				return []
@@ -76,14 +78,16 @@ export default {
 		})
 
 		return {
+			mobileNavOpen,
+			subnavRoute,
+			navItems,
+
 			currentNavRoute,
 			currentChildRoute,
-			mobileNavOpen,
-			navItems,
 			mobileNavItems,
-			toggleMobileNav,
-			subnavRoute,
+
 			toggleSubnav,
+			toggleMobileNav,
 		}
 	}
 }

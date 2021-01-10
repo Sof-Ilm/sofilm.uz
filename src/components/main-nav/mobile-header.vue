@@ -4,7 +4,7 @@
 			@click="$emit('toggle-mobile-nav')"
 			:class="['w-full pr-6 text-xl uppercase text-center font-bold text-gold', {invisible: mobileNavOpen}]">
 			<component :is="currentNavRoute.meta.icon" class="inline-block w-6 h-6 mb-1 mr-2" />
-			{{ currentChildRoute?.meta.title || currentNavRoute.meta.title }}
+			<span>{{ currentChildRoute?.meta.title || currentNavRoute.meta.title }}</span>
 		</button>
 
 		<button @click="$emit('toggle-mobile-nav')" :class="['z-30', {'text-gold': mobileNavOpen}]">
