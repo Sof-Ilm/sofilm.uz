@@ -10,6 +10,7 @@
 		:current-nav-route="currentNavRoute"
 		:current-child-route="currentChildRoute"
 		:mobile-nav-open="mobileNavOpen"
+		@open-subnav="openSubnav($event)"
 		@toggle-mobile-nav="toggleMobileNav($event)" />
 
 	<teleport v-if="mobileNavOpen" to="body">
@@ -59,6 +60,10 @@ export default {
 			return navItems
 		})
 
+		const openSubnav = route => {
+			subnavRoute.value = route
+			toggleMobileNav(true)
+		}
 		const toggleSubnav = route => {
 			subnavRoute.value = subnavRoute.value.name === route.name
 				? {}
@@ -66,8 +71,10 @@ export default {
 		}
 		const toggleMobileNav = (val = !mobileNavOpen.value) => {
 			mobileNavOpen.value = val
-			toggleSubnav({})
 
+			if (!val) {
+				toggleSubnav({})
+			}
 			document.querySelector('body').classList
 				[val ? 'add' : 'remove']('overflow-hidden', 'fixed', 'inset-0')
 		}
@@ -86,6 +93,7 @@ export default {
 			currentChildRoute,
 			mobileNavItems,
 
+			openSubnav,
 			toggleSubnav,
 			toggleMobileNav,
 		}
