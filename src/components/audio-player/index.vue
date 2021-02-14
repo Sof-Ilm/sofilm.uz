@@ -5,7 +5,7 @@
 			:album="album"
 			:tracks="tracks"
 			:current-track="currentTrack"
-			@track-click="playTrack($event)"
+			@track-click="playTrack($event.id)"
 			@close-click="togglePlaylist()" />
 
 		<audio class="w-full" crossorigin="anonymous" controls></audio>
@@ -40,6 +40,7 @@
 <script>
 import Plyr from 'plyr/dist/plyr.polyfilled'
 import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
 import { ref, computed, watch, onMounted } from 'vue'
 import Playlist from './playlist.vue'
 import Controls from './controls.vue'
@@ -56,6 +57,7 @@ export default {
 	},
 	setup () {
 		const store = useStore()
+		const route = useRoute()
 		const playlistVisible = ref(true)
 		const currentTrack = ref(null)
 
@@ -64,7 +66,14 @@ export default {
 		let prevAvailable = ref(false)
 		let nextAvailable = ref(false)
 
-		const playTrack = track => {
+		const playTrack = async (trackId) => {
+			const index = tracks.value.findIndex(({ id }) => id === trackId)
+			if (index === -1) {
+				return
+			}
+
+			const track = tracks.value[index]
+
 			player.source = {
 				type: 'audio',
 				title: track.title,
@@ -72,8 +81,6 @@ export default {
 					{type: 'audio/mp3', src: track.url}
 				]
 			}
-
-			const index = tracks.value.findIndex(({ id }) => id === track.id)
 
 			prevAvailable.value = tracks.value.length && index > 0
 			nextAvailable.value = index < tracks.value.length - 1
@@ -83,7 +90,16 @@ export default {
 				title: track.title,
 			}
 
-			player.play()
+			try {
+				await player.play()
+			}
+			catch (err) {
+				// autoplay might be not allowed,
+				// otherwise, log if different error
+				if (err.name !== 'NotAllowedError') {
+					console.error(err)
+				}
+			}
 		}
 		const togglePlayback = () => {
 			player.togglePlay()
@@ -109,12 +125,26 @@ export default {
 				isPlaying.value = false
 			})
 
+			const trackQuery = route.query.track
+			let trackId
+
+			if (trackQuery.length && trackQuery.includes('/')) {
+				const trackId = trackQuery.split('/')[1]
+				
+				if (trackId) {
+					playTrack(trackId)
+				}
+				else if (tracks.value.length) {
+					playTrack(tracks.value[0].id)
+				}
+			}
+
 			watch(tracks, val => {
 				if (val.length) {
 					playlistVisible.value = true
-					playTrack(val[0])
+					playTrack(val[0].id)
 				}
-			}, {immediate: true})
+			})
 		})
 
 		return {
@@ -126,8 +156,8 @@ export default {
 			prevAvailable,
 			nextAvailable,
 
-			prevTrack: () => playTrack(tracks.value[currentTrack.value.index - 1]),
-			nextTrack: () => playTrack(tracks.value[currentTrack.value.index + 1]),
+			prevTrack: () => playTrack(tracks.value[currentTrack.value.index - 1].id),
+			nextTrack: () => playTrack(tracks.value[currentTrack.value.index + 1].id),
 			playTrack,
 			togglePlaylist,
 			togglePlayback,

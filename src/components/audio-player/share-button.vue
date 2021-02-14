@@ -34,11 +34,11 @@ export default {
 						to: {name: `mavzular/${props.album.category}`}
 					}
 				).href
-				url += `?t=${props.album.id}/${props.track.id}`
+				url += `?track=${props.album.id}/${props.track.id}`
 
 				const data = {
 					title: props.track.title,
-					text: `${props.track.title} [${props.album.title}] - www.sof-ilm.uz`,
+					text: `${props.track.title} [${props.album.title}]`,
 					url
 				}
 
