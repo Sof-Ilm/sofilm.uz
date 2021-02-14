@@ -26,11 +26,22 @@ export default {
 		})
 		const { value:getAlbums } = computed(() => store.getters['album/getAlbums'])
 
-		watch(category, cat => {
+		watch(category, async cat => {
 			if (cat) {
 				// fetch only if not cached
 				if (!getAlbums(cat).length) {
-					store.dispatch('album/fetchAlbums', {category: cat})
+					await store.dispatch('album/fetchAlbums', {category: cat})
+				}
+				
+				const trackQuery = route.query.track
+
+				if (trackQuery && trackQuery.includes('/')) {
+					const albumId = trackQuery.split('/')[0]
+					const album = store.state.album.albums.find(a => a.id === albumId)
+
+					if (album) {
+						store.dispatch('audioPlayer/fetchTracks', {album})
+					}
 				}
 			}
 		}, {immediate: true})
