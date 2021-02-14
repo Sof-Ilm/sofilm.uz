@@ -126,9 +126,8 @@ export default {
 			})
 
 			const trackQuery = route.query.track
-			let trackId
 
-			if (trackQuery.length && trackQuery.includes('/')) {
+			if (trackQuery && trackQuery.includes('/')) {
 				const trackId = trackQuery.split('/')[1]
 				
 				if (trackId) {
@@ -137,6 +136,9 @@ export default {
 				else if (tracks.value.length) {
 					playTrack(tracks.value[0].id)
 				}
+			}
+			else {
+				playTrack(tracks.value[0].id)
 			}
 
 			watch(tracks, val => {

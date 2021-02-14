@@ -35,7 +35,7 @@ export default {
 				
 				const trackQuery = route.query.track
 
-				if (trackQuery.length && trackQuery.includes('/')) {
+				if (trackQuery && trackQuery.includes('/')) {
 					const albumId = trackQuery.split('/')[0]
 					const album = store.state.album.albums.find(a => a.id === albumId)
 

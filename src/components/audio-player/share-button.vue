@@ -38,7 +38,7 @@ export default {
 
 				const data = {
 					title: props.track.title,
-					text: `${props.track.title} [${props.album.title}]\n`,
+					text: `${props.track.title} [${props.album.title}]`,
 					url
 				}
 
