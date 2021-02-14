@@ -28,7 +28,11 @@
 				</div>
 			</div>
 
-			<VolumeControl class="self-end sm:self-auto mb-6 sm:mb-0" />
+			<ShareButton
+				class="self-end sm:self-auto mb-6 sm:mb-0"
+	 			:album="album"
+				:track="currentTrack"
+			/>
 		</div>
 	</div>
 </template>
@@ -39,7 +43,7 @@ import { useStore } from 'vuex'
 import { ref, computed, watch, onMounted } from 'vue'
 import Playlist from './playlist.vue'
 import Controls from './controls.vue'
-import VolumeControl from './volume-control.vue'
+import ShareButton from './share-button.vue'
 
 let player = {}
 
@@ -48,9 +52,9 @@ export default {
 	components: {
 		Playlist,
 		Controls,
-		VolumeControl,
+		ShareButton,
 	},
-	setup (props) {
+	setup () {
 		const store = useStore()
 		const playlistVisible = ref(true)
 		const currentTrack = ref(null)
